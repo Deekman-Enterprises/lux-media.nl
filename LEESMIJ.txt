@@ -1,0 +1,19 @@
+UPDATE lux-media.nl — knop "Inloggen" in het menu
+==================================================
+
+Wat is er veranderd?
+In het menu van elke pagina staat nu een knop "Inloggen" die naar
+het klantportaal gaat (https://app.lux-media.nl).
+
+Zo zet je het online:
+1. Ga op GitHub naar de repository Deekman-Enterprises/lux-media.nl
+   (de website, NIET lux-portaal).
+2. Klik op "Add file" → "Upload files".
+3. Sleep deze 7 html-bestanden erin:
+   index.html, diensten.html, projecten.html, over-ons.html,
+   contact.html, privacy.html, 404.html
+   (GitHub vraagt niets; de oude worden vervangen.)
+4. Commit changes. Na 1–2 minuten staat de knop live.
+
+Niet uploaden: dit LEESMIJ-bestand. config.js en de mappen img/video/js
+blijven zoals ze zijn.
