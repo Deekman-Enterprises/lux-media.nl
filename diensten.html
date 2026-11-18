@@ -76,8 +76,69 @@ a{color:#E07AC4}a:hover{color:#F7F3FA}
 @media (prefers-reduced-motion:reduce){.site *,.site *::before,.site *::after{animation:none !important;transition:none !important}}
 </style>
 <style>@media (max-width:640px){.nav{row-gap:6px !important;column-gap:22px !important}}.nav a.actief{color:#F7F3FA}.nav a.actief::after{transform:scaleX(1)}</style>
+<script>try{if(!sessionStorage.getItem('lux_intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-aan')}catch(e){}</script>
+<style>
+#lux-intro{display:none}
+html.intro-aan{overflow:hidden}
+html.intro-aan #lux-intro{display:block;position:fixed;inset:0;z-index:9999;cursor:pointer}
+html.intro-aan:not(.intro-open) .in,html.intro-aan:not(.intro-open) .groei{animation-play-state:paused}
+#lux-intro svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.li-binnen{animation:liBinnen 2.5s linear forwards}
+.li-glas{transform-origin:0 0;animation:liGlas 2.5s cubic-bezier(.2,.8,.2,1) forwards}
+.li-ring{transform-origin:0 0;animation:liRing 2.5s cubic-bezier(.3,.7,.2,1) forwards}
+.li-ring2{transform-origin:0 0;animation:liRing2 2.5s cubic-bezier(.3,.7,.2,1) forwards}
+.li-iris{transform-origin:0 0;animation:liIris 2.5s cubic-bezier(.6,0,.2,1) forwards}
+.li-blad{transform-origin:0 0;opacity:0;animation:liBlad 2.5s cubic-bezier(.6,0,.2,1) forwards}
+.li-hoek{transform-origin:0 0;animation:liHoek 2.5s cubic-bezier(.2,.8,.2,1) forwards}
+.li-flits{position:absolute;inset:0;background:#fff;opacity:0;animation:liFlits 2.5s linear forwards;pointer-events:none}
+.li-hud{position:absolute;left:0;right:0;bottom:max(28px,4vh);display:flex;justify-content:center;gap:22px;font:600 12px/1 Montserrat,system-ui,sans-serif;letter-spacing:.3em;color:#B3A9BD;animation:liHud 2.5s linear forwards}
+.li-hud b{color:#FF5E5B;font-weight:700}
+.li-skip{position:absolute;right:20px;top:20px;padding:10px 16px;border-radius:999px;border:1px solid #3A3145;background:rgba(13,10,18,.6);color:#F7F3FA;font:600 13px Montserrat,system-ui,sans-serif;cursor:pointer;animation:liHud 2.5s linear forwards}
+@keyframes liBinnen{0%,55%{opacity:1}56%,100%{opacity:0}}
+@keyframes liGlas{0%{transform:scale(1.25) rotate(-25deg);opacity:0}25%{opacity:1}45%{transform:scale(1) rotate(0)}55%{transform:scale(.97)}100%{transform:scale(.97)}}
+@keyframes liRing{0%{transform:rotate(-140deg) scale(1.1)}40%{transform:rotate(12deg) scale(1)}48%{transform:rotate(0)}100%{transform:rotate(0)}}
+@keyframes liRing2{0%{transform:rotate(90deg)}45%{transform:rotate(-8deg)}100%{transform:rotate(-8deg)}}
+@keyframes liIris{0%{transform:rotate(-50deg) scale(.2)}30%{transform:rotate(0) scale(1.1)}38%{transform:rotate(-8deg) scale(.8)}44%{transform:rotate(0) scale(1)}51%,100%{transform:rotate(25deg) scale(.08)}}
+@keyframes liBlad{0%,53%{opacity:0;transform:rotate(25deg) scale(.08)}54%{opacity:1;transform:rotate(25deg) scale(.08)}100%{opacity:1;transform:rotate(100deg) scale(18)}}
+@keyframes liHoek{0%,28%{transform:scale(1.5);opacity:0}38%{transform:scale(1);opacity:1}46%{transform:scale(.92);opacity:1}55%,100%{opacity:0}}
+@keyframes liFlits{0%,52%{opacity:0}55%{opacity:.95}68%,100%{opacity:0}}
+@keyframes liHud{0%,8%{opacity:0}20%,50%{opacity:1}56%,100%{opacity:0}}
+</style>
 </head>
 <body>
+<div id="lux-intro" aria-hidden="true">
+<svg viewBox="-500 -500 1000 1000" preserveAspectRatio="xMidYMid meet">
+<defs>
+<radialGradient id="liBg"><stop offset="0" stop-color="#2A1838"></stop><stop offset=".45" stop-color="#140D1C"></stop><stop offset="1" stop-color="#0D0A12"></stop></radialGradient>
+<linearGradient id="liGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5E5B"></stop><stop offset=".5" stop-color="#C957B0"></stop><stop offset="1" stop-color="#8F55FF"></stop></linearGradient>
+<clipPath id="liClip"><circle r="158"></circle></clipPath>
+<radialGradient id="liGlans" cx=".35" cy=".3" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".22"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></radialGradient>
+</defs>
+<g class="li-binnen">
+<rect x="-5000" y="-5000" width="10000" height="10000" fill="url(#liBg)"></rect>
+<g class="li-glas">
+<circle r="330" fill="none" stroke="#2B2433" stroke-width="26"></circle>
+<circle r="300" fill="none" stroke="url(#liGrad)" stroke-width="3" opacity=".9"></circle>
+<g class="li-ring" stroke="#8E849A" stroke-width="2" fill="#B3A9BD" font-family="Montserrat,system-ui,sans-serif" font-size="15" font-weight="600"><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(0)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(6)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(12)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(18)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(24)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(30)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(36)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(42)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(48)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(54)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(60)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(66)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(72)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(78)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(84)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(90)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(96)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(102)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(108)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(114)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(120)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(126)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(132)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(138)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(144)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(150)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(156)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(162)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(168)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(174)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(180)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(186)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(192)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(198)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(204)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(210)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(216)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(222)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(228)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(234)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(240)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(246)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(252)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(258)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(264)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(270)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(276)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(282)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(288)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(294)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(300)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(306)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(312)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(318)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(324)"></line><line x1="0" y1="-262" x2="0" y2="-240" transform="rotate(330)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(336)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(342)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(348)"></line><line x1="0" y1="-262" x2="0" y2="-250" transform="rotate(354)"></line><text transform="rotate(-60) translate(0 -222)" text-anchor="middle">∞</text><text transform="rotate(-43) translate(0 -222)" text-anchor="middle">10</text><text transform="rotate(-26) translate(0 -222)" text-anchor="middle">5</text><text transform="rotate(-9) translate(0 -222)" text-anchor="middle">3</text><text transform="rotate(8) translate(0 -222)" text-anchor="middle">2</text><text transform="rotate(25) translate(0 -222)" text-anchor="middle">1.5</text><text transform="rotate(42) translate(0 -222)" text-anchor="middle">1</text><text transform="rotate(59) translate(0 -222)" text-anchor="middle">0.7</text></g>
+<g class="li-ring2"><circle r="196" fill="none" stroke="#3A3145" stroke-width="2" stroke-dasharray="2 10"></circle>
+<path id="liBoog" d="M-176 0 A176 176 0 0 1 176 0" fill="none"></path>
+<text font-family="Montserrat,system-ui,sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#8E849A"><textPath href="#liBoog" startOffset="50%" text-anchor="middle">LUX MEDIA &amp; PRODUCTIONS · 50 MM · F/1.8</textPath></text></g>
+<g clip-path="url(#liClip)"><g class="li-iris"><path d="M-6000 -6000 H6000 V6000 H-6000 Z M92.4 -38.3 L92.4 38.3 L38.3 92.4 L-38.3 92.4 L-92.4 38.3 L-92.4 -38.3 L-38.3 -92.4 L38.3 -92.4 Z" fill="#120C19" fill-rule="evenodd"></path><path d="M92.4 38.3 L92.4 -1361.7 M38.3 92.4 L1028.2 -897.6 M-38.3 92.4 L1361.7 92.4 M-92.4 38.3 L897.6 1028.2 M-92.4 -38.3 L-92.4 1361.7 M-38.3 -92.4 L-1028.2 897.6 M38.3 -92.4 L-1361.7 -92.4 M92.4 -38.3 L-897.6 -1028.2 " stroke="#3A3145" stroke-width="2.5" fill="none"></path><path d="M92.4 -38.3 L92.4 38.3 L38.3 92.4 L-38.3 92.4 L-92.4 38.3 L-92.4 -38.3 L-38.3 -92.4 L38.3 -92.4 Z" fill="none" stroke="url(#liGrad)" stroke-width="2"></path></g></g>
+<circle r="160" fill="none" stroke="url(#liGrad)" stroke-width="1.5" opacity=".5"></circle>
+<circle r="150" fill="url(#liGlans)"></circle>
+<path d="M-110 -70 A130 130 0 0 1 -40 -125" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"></path>
+<path d="M95 80 A125 125 0 0 1 60 108" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="4" stroke-linecap="round"></path>
+</g>
+<g class="li-hoek" fill="none" stroke="#F7F3FA" stroke-width="3" stroke-linecap="round"><path d="M-70 -40 V-70 H-40"></path><path d="M40 -70 H70 V-40"></path><path d="M70 40 V70 H40"></path><path d="M-40 70 H-70 V40"></path><circle r="4" fill="#FF5E5B" stroke="none"></circle></g>
+</g>
+<g class="li-blad"><path d="M-6000 -6000 H6000 V6000 H-6000 Z M92.4 -38.3 L92.4 38.3 L38.3 92.4 L-38.3 92.4 L-92.4 38.3 L-92.4 -38.3 L-38.3 -92.4 L38.3 -92.4 Z" fill="#0D0A12" fill-rule="evenodd"></path><path d="M92.4 38.3 L92.4 -1361.7 M38.3 92.4 L1028.2 -897.6 M-38.3 92.4 L1361.7 92.4 M-92.4 38.3 L897.6 1028.2 M-92.4 -38.3 L-92.4 1361.7 M-38.3 -92.4 L-1028.2 897.6 M38.3 -92.4 L-1361.7 -92.4 M92.4 -38.3 L-897.6 -1028.2 " stroke="#3A3145" stroke-width="2.5" fill="none"></path><path d="M92.4 -38.3 L92.4 38.3 L38.3 92.4 L-38.3 92.4 L-92.4 38.3 L-92.4 -38.3 L-38.3 -92.4 L38.3 -92.4 Z" fill="none" stroke="url(#liGrad)" stroke-width="2"></path></g>
+</svg>
+<div class="li-hud"><span><b>●</b> REC</span><span>F/1.8</span><span>1/250</span><span>ISO 100</span></div>
+<div class="li-flits"></div>
+<button type="button" class="li-skip">Overslaan</button>
+</div>
+<script>(function(){var h=document.documentElement,el=document.getElementById('lux-intro');if(!h.classList.contains('intro-aan')||!el)return;var klaar=false;function stop(){if(klaar)return;klaar=true;try{sessionStorage.setItem('lux_intro','1')}catch(e){}h.classList.remove('intro-aan','intro-open');el.remove();}setTimeout(function(){h.classList.add('intro-open')},1300);el.addEventListener('click',stop);document.addEventListener('keydown',stop,{once:true});setTimeout(stop,2500);})();</script>
+
 <div class="site ">
 <header style="max-width: 1320px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <a aria-label="LUX Media &amp; Productions, naar home" href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #F7F3FA">
